@@ -1,30 +1,21 @@
 #ifndef Game_h
 #define Game_h
+#include "Window.h"
+#include "buffs.h"
 
-#include "SDL2/SDL.h"
-#include "SDL2_image/SDL_image.h"
-#include <vector>
-#include <iostream>
-
-
-
-class Game{
+class Game : public Window{
 public:
-
-    void init(char *title, int x, int y, int width, int height, bool fullscreen);
+    
+    void setStart();
     void events();
     void update();
     void render();
-    bool running(){return runningNow;};
-    void clean();
-    static SDL_Renderer* renderer;
-	static SDL_Event event;
-	
-
+    void verify();
+    
 private:
-    int cnt = 0;
-    bool runningNow = false;
-    SDL_Window *window;
+    int sec, mins;
+    std::vector<Buff*> bufff;
+    
 };
 
 #endif /* Game_h */
